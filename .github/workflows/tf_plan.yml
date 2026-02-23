@@ -18,25 +18,7 @@ jobs:
               uses: hashicorp/setup-terraform@v1
               with:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
-            
-            # - name: setup Azure Account
-            #   uses: azure/login@v2
-            #   with:
-            #     creds: ${{ secrets.ARM_SUBSCRIPTION_ID }}
-            #     # if using individual secrets, use:
-            #     client-id: ${{ secrets.ARM_CLIENT_ID }}
-            #     #client-secret: ${{ secrets.ARM_CLIENT_SECRET }}
-            #     tenant-id: ${{ secrets.ARM_TENANT_ID }}
-
-            
-            #- name: Azure login
-            #   uses: azure/login@v2
-            #   with:
-            #     auth-type: IDENTITY
-            #     client-id: ${{ secrets.AZURE_CLIENT_ID }}
-            #     tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-            #     subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-            #     enable-AzPSSession: true
+          
             - name: Azure login
               uses: azure/login@v2
               with:
@@ -52,4 +34,5 @@ jobs:
             - name: Terraform Plan
               id: plan
               if: github.event_name == 'push'
-              run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -no-color
+              #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -no-color 
+              run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -generate-config-out=generated.tf

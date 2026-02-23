@@ -17,5 +17,15 @@ Solution:
 
 For CI/CD, it is highly recommended to use Service Account or Service Principals or Managed Identities by setting the following environment variables instead of relying on az login:
 
+3. Terraform issues and Error - questions
+╷
+│ Error: creating Account (Subscription: "***"
+│ Resource Group Name: "RG-AI-Service-Resources"
+│ Account Name: "oai-service-account"): performing AccountsCreate: unexpected status 409 (409 Conflict) with error: FlagMustBeSetForRestore: An existing resource with ID '/subscriptions/***/resourceGroups/RG-AI-Service-Resources/providers/Microsoft.CognitiveServices/accounts/oai-service-account' has been soft-deleted. To restore the resource, you must specify 'restore' to be 'true' in the property. If you don't want to restore existing resource, please purge it first.
+│ 
+│   with azurerm_cognitive_account.ai-service-OpenAI,
+│   on Cognitive_Services_Deployment.tf line 8, in resource "azurerm_cognitive_account" "ai-service-OpenAI":
+│    8: resource "azurerm_cognitive_account" "ai-service-OpenAI" {
+
 
 
