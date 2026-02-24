@@ -30,10 +30,10 @@ jobs:
 
             - name: Terraform Init
               id: init
-              run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" init
+              run: terraform -chdir="../GitOps-main/Infra/Azure_Kubernetes_Clusters/" init
 
             - name: Terraform Plan
               id: plan
               if: github.event_name == 'push'
               #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -no-color 
-              run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -generate-config-out=generated.tf
+              run: terraform -chdir="../GitOps-main/Infra/Azure_Kubernetes_Clusters/" plan -generate-config-out=generated.tf
