@@ -19,7 +19,7 @@ jobs:
               with:
                 cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-                
+
 
             - name: Azure login
               uses: azure/login@v2
@@ -32,13 +32,13 @@ jobs:
 
             - name: Terraform Init
               id: init
-              run: terraform -chdir="../GitOps-main/Infra/Azure_Kubernetes_Clusters/" init
+              run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" init
 
             - name: Terraform Plan
               id: plan
               if: github.event_name == 'push'
               #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -no-color
-              run: terraform -chdir="../GitOps-main/Infra/Azure_Kubernetes_Clusters/" plan -generate-config-out=generated.tf
+              run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" plan -generate-config-out=generated.tf
               #continue-on-error: true
 
 
@@ -50,7 +50,7 @@ jobs:
             - name: Terraform Apply
               if: github.ref == 'refs/heads/main' && github.event_name == 'push'
               #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
-              run: terraform -chdir="../GitOps-main/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
+              run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
 
             # - name: Terraform Destroy
             #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
