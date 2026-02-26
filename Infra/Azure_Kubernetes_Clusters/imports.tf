@@ -44,6 +44,6 @@ import {
   for_each = local.openai_models
 #  #id        = each.key
   to       = azurerm_cognitive_deployment.models[each.key]
-#  #id       ="/subscriptions/3baeba7a-1c88-4266-91ef-7a9738a6dfef/resourceGroups/${each.value.rg}/providers/Microsoft.CognitiveServices/accounts/${each.value.account}/deployments/${each.value.deployment_name}"
-  id       ="/subscriptions/3baeba7a-1c88-4266-91ef-7a9738a6dfef/resourceGroups/RG-AI-Service-Resources/providers/Microsoft.CognitiveServices/accounts/oai-service-account-01/deployments/${each.value.model_name}"
+#  #id       ="/subscriptions/3baeba7a-1c88-4266-91ef-7a9738a6dfef/resourceGroups/${each.value.rg}/providers/Microsoft.CognitiveServices/accounts/${each.value.account}/deployments/${each.value.model_name}"
+  id       ="/subscriptions/3baeba7a-1c88-4266-91ef-7a9738a6dfef/resourceGroups/RG-AI-Service-Resources/providers/Microsoft.CognitiveServices/accounts/oai-service-account-01/deployments/${each.value.deployment_name}"
 }
