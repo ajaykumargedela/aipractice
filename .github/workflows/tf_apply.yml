@@ -50,14 +50,14 @@ jobs:
               if: steps.plan.outcome == 'failure'
               run: exit 1
             
-            - name: Terraform Apply
-              if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-              #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
-              run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
+            #- name: Terraform Apply
+            #  if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+            #  #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
+            #  run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" apply -auto-approve
 
-            # - name: Terraform Destroy
-            #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-            #   run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" destroy
+            - name: Terraform Destroy
+              if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+              run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" destroy
     North_Central_US_Deployment:
       name: "North_Central_US_Deployment - Terraform Deployment"
       runs-on: ubuntu-latest
