@@ -37,3 +37,6 @@ jobs:
               if: github.event_name == 'push'
               #run: terraform -chdir="../GitOps/Infra/Azure_Kubernetes_Clusters/" plan -no-color 
               run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" plan -generate-config-out=generated.tf
+              - name: Terraform Destroy
+              if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+              run: terraform -chdir="../aipractice/Infra/Azure_Kubernetes_Clusters/" destroy
